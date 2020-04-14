@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+:root{
+    --h-nav: 80px;
+    --btn-menu-show: 8px;
+    --btn-menu-hide: 35px;
+    --bg-main: #bb1338;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    font-family: 'Open Sans', sans-serif;;
+}
+.content{
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 280px auto;
+    grid-template-rows: var(--h-nav) auto;
+    grid-template-areas: "sidebar nav" "sidebar main";
+
+    transition-property: all;
+    transition-duration:0.400s;
+    transition-timing-function:ease-in; 
+}
+/* transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in; */
+/* transition: .4s grid-template-columns ease-in; */
+.content #sidebar{
+    grid-area: sidebar;
+    background: var(--bg-main);
+}
+
+.content nav{
+    grid-area: nav;
+    background: #e7e7e7;
+}
+.content main{
+    grid-area: main;
+    background: #ffffff;
+    overflow: auto;
+}
+
+.content #sidebar .c-title{
+    height: var(--h-nav);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content #sidebar .c-title h1,
+.content #sidebar .c-title i{
+    color: #fff;
+    font-size: 30px;
+}
+.content #sidebar .c-title h1{
+    margin-left: 10px;
+}
+
+/* Se ejecuta cuando el sidebar es de 100px de ancho */
+/* @keyframes slideMenuOn {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+} */
+
+/* Se ejecuta cuando el sidebar es de 280px de ancho */
+/* @keyframes slideMenuOff {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+} */
+
+.content nav{
+    display: flex;
+    align-items: center;
+}
+.content nav #btn-menu{
+    padding: 15px 10px;
+}
+.content nav #btn-menu .i-hamburger::after{
+    display: block;
+    position: absolute;
+    top: -11px;
+    content: "";
+    background: linear-gradient(120deg, var(--bg-main), rgba(0, 0, 0, 0.603)) ;
+    width: var(--btn-menu-show);
+    height: calc(var(--btn-menu-show) - 2px);
+    border-radius: 10px;
+    transition: all .3s ease-in;
+}
+.content nav #btn-menu .i-hamburger{
+    display: block;
+    position: relative;
+    background: linear-gradient(120deg, var(--bg-main), rgba(0, 0, 0, 0.603)) ;
+    width: var(--btn-menu-show);
+    height: calc(var(--btn-menu-show) - 2px);
+    border-radius: 10px;
+    transition: all .4s ease-in;
+}
+.content nav #btn-menu .i-hamburger::before{
+    display: block;
+    position: absolute;
+    top: 11px;
+    content: "";
+    background: linear-gradient(120deg, var(--bg-main), rgba(0, 0, 0, 0.603)) ;
+    width: var(--btn-menu-show);
+    height: calc(var(--btn-menu-show) - 2px);
+    border-radius: 10px;
+    transition: all .5s ease-in;
+}
+.content nav #btn-menu:hover .i-hamburger,
+.content nav #btn-menu:hover .i-hamburger::after,
+.content nav #btn-menu:hover .i-hamburger::before{
+    cursor: pointer;
+    width: var(--btn-menu-hide);
+}
